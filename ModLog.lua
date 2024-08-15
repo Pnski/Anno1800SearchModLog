@@ -42,6 +42,15 @@ function ModLoader(GivenTag)
     return _content
 end
 
+function listIncompatible()
+    local fList = ModLoader("incompatible")
+    local newList = {}
+    for k,v in pairs(fList) do
+        local i,j = string.match(v,".*%]  (.*) is incompatible with: (.*)")
+        table.insert(newList,{i,j})
+    end
+    return newList
+end
 
 --[[ functional ]]
 -- function readFile() DefaultPath = os.getenv("USERPROFILE")..[[\Documents\Anno 1800\log\mod-loader.log]] local _File = io.open(DefaultPath, "r") local _content = {} for k in _File:lines() do table.insert(_content,k) end _File:close() return _content end
